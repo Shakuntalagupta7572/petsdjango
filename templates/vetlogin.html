@@ -1,0 +1,48 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Login as Vet
+{% endblock title %}
+
+
+{% block content %}
+<section class="start">
+    <div class="container">
+        <div class="row">
+            <div class="col bg-secondary">
+                
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0">
+                    <div class="card-header bg-transparent">
+                        <h4>Login as Vetenary</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block css %}
+<style>
+    
+</style>
+{% endblock %}
+
+{% block js %}
+<script></script>
+{% endblock %}

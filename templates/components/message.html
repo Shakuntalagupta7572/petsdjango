@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+{%if messages %}
+{% for mesage in messages %}
+<script>
+    Toastify({
+  text: "message",
+  close: true,
+  gravity: "top", // `top` or `bottom`
+  position: "center", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    background: "#d5425",
+    
+  },
+  Offset:{
+    x:0,
+    y:50,
+  }
+}).showToast();
+
+</script>
+{% endfor %}
+{% endif %}
