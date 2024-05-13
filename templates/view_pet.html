@@ -1,0 +1,52 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}
+Vet Profile
+{% endblock title %}
+
+{% block content %}
+<section class="d-flex align-items-center"></section>
+<section id="vet Profiles" class="vet Profiles">
+    <div class="container py-4">
+        
+    
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+          <div class="container-fluid py-5">
+            <div class="row justify-content-between">
+                <div class="col-md-4 mb-3">
+                    <img src="{{pet.image.url}}" class="img-fluid rounded-circle" alt="...">
+                </div>
+                <div class="col-md-4  mb-3">
+                    <div class="display-3">
+                        {{pet.title}}
+                    </div>
+                    <h1 class="display-5 fw-bold">{{pet.pet_type}} | {{pet.category}}</h1>
+                <p class="col-md-8 fs-4">{{pet.description}}</p>
+            </div>
+            <div class="mb-3 d-grid">
+                <a href="{% url 'appointment' %}" class="btn btn-primary btn-lg" type="button">Book vet</a>
+            </div>
+            </div>
+          </div>
+        </div>
+    
+        
+    
+        <footer class="pt-3 mt-4 text-body-secondary border-top">
+          Pet© 2024
+        </footer>
+      </div>
+</section>
+
+{% endblock content %}
+
+{% block css %}
+<style>
+
+</style>
+
+{% endblock css %}
+
+{% block js %}
+<script></script>
+{% endblock js %}

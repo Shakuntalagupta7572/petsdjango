@@ -1,0 +1,75 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}About us{% endblock %}
+
+
+{% block content %}
+<section></section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="profile">
+                    <img src="{{ vet.image.url }}" alt="" class="img-fluid">
+                    <h2>{{ vet.name }}</h2>
+                    <p>{{ vet.email }}</p>
+                    <p>{{ vet.phone }}</p>
+                    <p><b>{{ vet.department }}</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Pet</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for item in appointments %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.phone}}</td>
+                                <td>{{ item.pet}}</td>
+                                <td>{{ item.date}}</td>
+                                <td>{{ item.time}}</td>
+                                <td>{{ item.message}}</td>
+                                <td>{{ item.appointment_status}}</td>
+                                <td class="">
+
+
+
+                                    {% if item.appointment_status == 'A' %}
+                                    <a href="{% url 'reject_appointment' item.id %}" class="btn btn-danger">Cancel</a>
+                                    {% elif item.appointment_status == 'P' %}
+                                    <a href="{% url 'accept_appointment' item.id %}"
+                                        class="btn btn-primary mb-3">Accept</a>
+                                    <a href="{% url 'reject_appointment' item.id %}" class="btn btn-danger">Cancel</a>
+                                    {% endif %}
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

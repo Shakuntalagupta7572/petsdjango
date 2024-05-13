@@ -2,8 +2,7 @@
 <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-between">
         <div class="contact-info d-flex align-items-center">
-            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com"></a>
-            <i class="bi bi-phone"></i> 
+
         </div>
         <div class="d-none d-lg-flex social-links align-items-center">
             <a href="#" class="twitter"><i class="#"></i></a>
@@ -19,26 +18,46 @@
     <div class="container d-flex align-items-center">
 
         <h1 class="logo me-auto"><a href="index.html">Pet Wellness Tracker</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- Uncomment below if you prefer to use an imag logo -->
         <!-- <a href="index.html" class="logo me-auto"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
                 <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
-                <li><a class="nav-link scrollto" href="{% url 'about' %}"\>About</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'about' %}" \>About</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'services' %}">Services</a></li>
                 <li><a class="nav-link scrollto" href="{% url 'Departments'%}">Departments</a></li>
-                <li><a class="nav-link scrollto" href="{% url 'vet_login' %}">Vetnary</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="nav-link scrollto" href="{% url 'view_vets' %}">View Veternary</a></li>
+                {% else %}
+                <li><a class="nav-link scrollto" href="{% url 'vet_login' %}">Login as vet</a></li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li><a class="nav-link scrollto" href="{% url 'add_vet' %}">Add Vet</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'admin:index' %}">Admin</a></li>
+                {% else %}
+                <li><a class="nav-link scrollto" href="{% url 'profile' %}">Profile</a></li>
+                {% endif %}
+                <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
                 <li><a class="nav-link scrollto" href="{% url 'login' %}">Login</a></li>
-                <li><a class="nav-link scrollto" href="{% url 'register' %}">Register</a></li>++
+                <li><a class="nav-link scrollto" href="{% url 'register' %}">Register</a></li>
+                {% endif %}
                 <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact</a></li>
-                
+                {}
+                <li><a class="nav-link scrollto" href="{% url 'article' %}">Article</a></li>
+           
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
 
-        <a href="{% url 'appointment' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline"> Appointment</span>
-            </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'appointment' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">
+                Appointment</span></a>
+        {% endif %}
 
     </div>
 </header><!-- End Header -->

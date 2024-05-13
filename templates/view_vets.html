@@ -1,0 +1,55 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Vet Profile
+{% endblock title %}
+
+{% block content %}
+
+<section id="vet Profiles" class="vet Profiles">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Vet Profiles</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+        in iste officiis commodi quidem hic quas.</p>
+    </div>
+    <div class="row">
+
+      {% for vet in vets %}
+      <div class="col-lg-3 mb-3">
+        <div class="member d-flex align-items-start card">
+          <div class="pic"><img src="{{vet.image.url}}" class="img-fluid" alt=""
+              style="object-fit: cover; height: 300px; width:100% ; aspect-ratio: 1/1;object-position: top;"></div>
+          <div class="member-info card-body">
+            <h4>{{vet.name}}</h4>
+            <span>{{vet.department}} Expert</span>
+            <p>{{vet.email}} <br> {{vet.phone}}</p>
+            <div class="social gap-3">
+              <a href=" {% url 'appointment' %}"><button type="click" class="btn btn-primary ">Book Appointment</button></a>
+              <a href=""><i class="ri-twitter-fill"></i></a>
+              <a href=""><i class="ri-facebook-fill"></i></a>
+              <a href=""><i class="ri-instagram-fill"></i></a>
+              <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block css %}
+<style>
+
+</style>
+
+{% endblock css %}
+
+{% block js %}
+<script></script>
+{% endblock js %}

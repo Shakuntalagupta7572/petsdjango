@@ -1,0 +1,80 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}
+Vet Profile
+{% endblock title %}
+
+{% block content %}
+<section class="d-flex align-items-center"></section>
+<section id="vet Profiles" class="vet Profiles">
+    <div class="container">
+
+        <!-- user profile -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="profile">
+                    <img src="{{ user.profile.image.url }}" alt="" class="img-fluid">
+                    <h2>{{ user.profile.user }}</h2>
+                    <p>{{ user.profile.bio }}</p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="profile-content">
+                    <h2>Profile</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-chevron-right"></i> <strong>Full Name:</strong> {{ user.profile.user }}</li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> {{ user.email }}</li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> {{ user.profile.phone }}</li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Address:</strong> {{ user.profile.address }}
+                        </li>
+                    </ul>
+                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-start align-items-center g-2">
+
+            {% for pet in pets %}
+            <div class="col">
+                <div class="card" style="width: 300px;">
+                    <a href="{% url 'view_pet' pet.id %}">
+                        <img src="{{ pet.image.url }}" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="{% url 'view_pet' pet.id %}">
+                            <h5 class="card-title">{{ pet.title }}</h5>
+                        </a>
+                        <p class="card-text">{{ pet.description }}</p>
+                        <small>{{pet.category}} | {{pet.pet_type}}</small>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'edit_pet' pet.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'remove_pet' pet.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- add new pet card-->
+            <div class="col">
+                <div class="card" style="width: 300px;">
+
+
+                    <a class="btn btn-primary" href="{% url 'add_pet' %}">Add Pet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block css %}
+<style>
+
+</style>
+
+{% endblock css %}
+
+{% block js %}
+<script></script>
+{% endblock js %}

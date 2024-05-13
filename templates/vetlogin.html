@@ -1,5 +1,5 @@
 {% extends 'layout/base.html' %}
-
+{% load static %}
 {% block title %}
 Login as Vet
 {% endblock title %}
@@ -9,8 +9,9 @@ Login as Vet
 <section class="start">
     <div class="container">
         <div class="row">
-            <div class="col bg-secondary">
-                
+            <div class="col">
+                <img src="{% static 'img/vet login.jpeg' %}" alt=""
+                    style="width: 100%; object-fit: cover; aspect-ratio: 3/1;">
             </div>
             <div class="col-md-4">
                 <div class="card border-0">
@@ -19,9 +20,10 @@ Login as Vet
                     </div>
                     <div class="card-body">
                         <form method="POST">
+                            {% csrf_token %}
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="name" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="name" name="username" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
@@ -39,7 +41,7 @@ Login as Vet
 
 {% block css %}
 <style>
-    
+
 </style>
 {% endblock %}
 
